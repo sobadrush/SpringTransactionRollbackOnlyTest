@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+<!-- 	<typeAliases> -->
+<!-- 		<typeAlias alias="AliasDeptVO" type="com.roger.model.DeptVO"/> -->
+<!-- 	</typeAliases> -->
+	
+		<settings>
+			<!-- ref. https://www.zhihu.com/question/20091325 -->
+			<setting name="logImpl" value="STDOUT_LOGGING"/><!-- SHOW-LOG -->
+		</settings>
+	
+<!-- 	<environments default="development"> -->
+<!-- 		<environment id="development"> -->
+<!-- 			<transactionManager type="JDBC"/> -->
+<!-- 			<dataSource type="POOLED"> -->
+<!-- 				<property name="driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/> -->
+<!-- 				<property name="url" value="jdbc:sqlserver://localhost:1433;database=DB_Emp_Dept;"/> -->
+<!-- 				<property name="username" value="sa"/> -->
+<!-- 				<property name="password" value="sa123456"/> -->
+<!-- 			</dataSource> -->
+<!-- 		</environment> -->
+<!-- 	</environments> -->
+	
+<!-- 	<mappers> -->
+<!-- 		<mapper resource="com/mybatis3/mappers/DeptMapper.xml"/> -->
+<!-- 	</mappers> -->
+	
+</configuration>

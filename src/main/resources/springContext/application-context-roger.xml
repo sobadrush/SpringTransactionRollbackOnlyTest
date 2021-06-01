@@ -6,9 +6,11 @@
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:util="http://www.springframework.org/schema/util"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
@@ -21,5 +23,27 @@
         <property name="username" value="${database.mssql.username}"/>
         <property name="password" value="#{T(com.roger.utils.EncryptUtil).decodeStr('${database.mssql.password}')}"/>
 	</bean>
+	
+	<bean id="mssqlTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" scope="singleton">
+		<constructor-arg name="dataSource" ref="myMssqlDB"/>
+	</bean>
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" 
+		p:dataSource-ref="myMssqlDB" 
+		p:configLocation="classpath:mybatis-config.xml" scope="singleton"/> 
+	
+	
+	<tx:annotation-driven transaction-manager="mssqlTransactionManager"/><!-- 開啟Spring聲明式交易 -->
+
+	<!-- 激活@Resource和@Autowired註解 -->
+	<!-- ref. https://www.itread01.com/content/1538157373.html -->
+    <!-- <context:annotation-config/> -->
+    
+    <!-- (開發中用這一個足以) -->
+    <!-- (激活 @Resource 和 @Autowired 註解，同時可以配置掃描的包以激活@Service、@Controller等註解) -->
+    <!-- <context:component-scan base-package="com.roger.mappers"/> -->
+    
+	<!-- Scan and build Mappers -->
+	<mybatis-spring:scan base-package="com.roger.mappers"/>
 	
 </beans>
