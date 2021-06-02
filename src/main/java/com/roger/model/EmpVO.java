@@ -9,21 +9,21 @@ public class EmpVO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private Integer empNo; // Column: empno
+	private String empNo; // Column: empno
 	private String empName; // Column: ename
 	private String empJob; // Column: job
 	private java.util.Date empHiredate; // Column: hiredate
-	private Integer deptNo;
+	private String deptNo;
 
 	public EmpVO() {
 		super();
 	}
 
-	public Integer getEmpNo() {
+	public String getEmpNo() {
 		return empNo;
 	}
 
-	public void setEmpNo(Integer empNo) {
+	public void setEmpNo(String empNo) {
 		this.empNo = empNo;
 	}
 
@@ -51,11 +51,11 @@ public class EmpVO implements Serializable {
 		this.empHiredate = empHiredate;
 	}
 
-	public Integer getDeptNo() {
+	public String getDeptNo() {
 		return deptNo;
 	}
 
-	public void setDeptNo(Integer deptNo) {
+	public void setDeptNo(String deptNo) {
 		this.deptNo = deptNo;
 	}
 

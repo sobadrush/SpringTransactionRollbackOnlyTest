@@ -73,9 +73,10 @@ public class DeptMapper_Test {
 	
 	@Test
 	@Ignore
-	@Rollback(false)
+	@Rollback(true)
 	public void test002() {
 		DeptVO deptVO = new DeptVO();
+		deptVO.setDeptNo("D20210601-99");
 		deptVO.setDeptName("交通部");
 		deptVO.setDeptLoc("板橋區");
 		System.out.println("INSERT Dept : " + deptMapper.insert(deptVO));

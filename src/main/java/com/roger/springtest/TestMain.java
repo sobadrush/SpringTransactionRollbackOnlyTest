@@ -3,8 +3,7 @@ package com.roger.springtest;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.roger.mappers.DeptMapper;
-import com.roger.model.DeptVO;
+import com.roger.service.DeptService;
 
 public class TestMain {
 
@@ -20,20 +19,28 @@ public class TestMain {
 		
 		// -----------------------------------------------------------------------------
 		// 測試MyBatis
+//		ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("springContext/application-context-roger.xml");
+//		DeptMapper deptMapper = context.getBean("deptMapper", DeptMapper.class);
+//		
+////		deptMapper.getAll().stream().forEach(deptVO -> {
+////			System.out.println("部門 : " + deptVO);
+////		});
+//		
+////		System.out.println(deptMapper.getByPrimaryKey(70));
+//		
+//		DeptVO deptVO = new DeptVO();
+//		// deptVO.setDeptName("研發部");
+//		deptVO.setDeptLoc("中國上海");
+//		System.out.println(deptMapper.getByCondition(deptVO));
+//		
+//		context.close();
+		
+		// -----------------------------------------------------------------------------
+		// 測試 : Transaction rolled back because it has been marked as rollback-only
+		// -----------------------------------------------------------------------------
 		ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("springContext/application-context-roger.xml");
-		DeptMapper deptMapper = context.getBean("deptMapper", DeptMapper.class);
-		
-//		deptMapper.getAll().stream().forEach(deptVO -> {
-//			System.out.println("部門 : " + deptVO);
-//		});
-		
-//		System.out.println(deptMapper.getByPrimaryKey(70));
-		
-		DeptVO deptVO = new DeptVO();
-		// deptVO.setDeptName("研發部");
-		deptVO.setDeptLoc("中國上海");
-		System.out.println(deptMapper.getByCondition(deptVO));
-		
+		DeptService deptSvc = context.getBean("deptService", DeptService.class);
+		deptSvc.insertDeptAndEmp();
 		context.close();
 	}
 

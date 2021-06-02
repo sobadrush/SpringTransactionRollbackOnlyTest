@@ -2,6 +2,7 @@ package com.roger.mappers;
 
 import java.util.Set;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -48,10 +49,17 @@ public interface EmpMapper {
 	
 	@Insert({
 		"<script>",
-			"INSERT INTO emp_TB(ename, job, hiredate, deptno) " + 
-			"VALUES(#{ empVO.empName }, #{ empVO.empJob }, #{ empVO.empHiredate }, #{ empVO.deptNo })",
+			"INSERT INTO EMP_TB(EMPNO, ENAME, JOB, HIREDATE, DEPTNO) " + 
+			"VALUES(#{ empVO.empNo }, #{ empVO.empName }, #{ empVO.empJob }, #{ empVO.empHiredate }, #{ empVO.deptNo })",
 		"</script>"
 	})
 	public int insert(@Param("empVO") EmpVO empVO);
+	
+	@Delete({
+		"<script>",
+			"DELETE FROM EMP_TB WHERE empno = #{ pEmpNo }" + 
+		"</script>"
+	})
+	public int delete(@Param("pEmpNo") String empNo);
 }
 

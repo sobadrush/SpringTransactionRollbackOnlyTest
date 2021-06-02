@@ -45,7 +45,7 @@ public interface DeptMapper {
 
 	@Insert({
 		"<script>",
-		    "INSERT INTO dept_TB(dname, loc) VALUES( #{paramVO.deptName}, #{paramVO.deptLoc} )",
+		    "INSERT INTO DEPT_TB(DEPTNO, DNAME, LOC) VALUES( #{paramVO.deptNo}, #{paramVO.deptName}, #{paramVO.deptLoc} )",
 		"</script>"
 	})
 	public int insert(@Param("paramVO") DeptVO paramDeptVO);

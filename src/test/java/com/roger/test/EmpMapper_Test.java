@@ -87,12 +87,19 @@ public class EmpMapper_Test {
 	@Rollback(true)
 	public void test003() {
 		EmpVO empVO = new EmpVO();
+		empVO.setEmpNo("E20210601-99");
 		empVO.setEmpName("館長");
 		empVO.setEmpJob("健身教練");
 		empVO.setEmpHiredate(new java.util.Date());
-		empVO.setDeptNo(20);
+		empVO.setDeptNo("D20210601-03"); // 業務部
 		System.out.println("INSERT EMP : " + empMapper.insert(empVO));
 	}
 	
+	@Test
+	@Ignore
+	@Rollback(true)
+	public void test004() {
+		System.out.println("DELETE EMP : " + empMapper.delete("E20210601-01"));
+	}
 
 }

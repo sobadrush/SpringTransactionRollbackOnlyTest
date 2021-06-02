@@ -9,7 +9,7 @@ public class DeptVO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private Integer deptNo; // Column: deptno
+	private String deptNo; // Column: deptno
 	private String deptName; // Column: dname
 	private String deptLoc; // Column: loc
 
@@ -17,29 +17,11 @@ public class DeptVO implements Serializable {
 		super();
 	}
 
-	public DeptVO(Integer deptNo) {
-		super();
-		this.deptNo = deptNo;
-	}
-
-	public DeptVO(String deptName, String deptLoc) {
-		super();
-		this.deptName = deptName;
-		this.deptLoc = deptLoc;
-	}
-
-	public DeptVO(Integer deptNo, String deptName, String deptLoc) {
-		super();
-		this.deptNo = deptNo;
-		this.deptName = deptName;
-		this.deptLoc = deptLoc;
-	}
-
-	public Integer getDeptNo() {
+	public String getDeptNo() {
 		return deptNo;
 	}
 
-	public void setDeptNo(Integer deptNo) {
+	public void setDeptNo(String deptNo) {
 		this.deptNo = deptNo;
 	}
 

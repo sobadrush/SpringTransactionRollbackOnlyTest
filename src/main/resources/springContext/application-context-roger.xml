@@ -41,7 +41,7 @@
     
     <!-- (開發中用這一個足以) -->
     <!-- (激活 @Resource 和 @Autowired 註解，同時可以配置掃描的包以激活@Service、@Controller等註解) -->
-    <!-- <context:component-scan base-package="com.roger.mappers"/> -->
+    <context:component-scan base-package="com.roger.service"/>
     
 	<!-- Scan and build Mappers -->
 	<mybatis-spring:scan base-package="com.roger.mappers"/>
